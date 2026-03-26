@@ -118,7 +118,7 @@
       .fast-actions{flex-direction:column;align-items:stretch;}
       .fast-actions .fast-btn{width:100%;}
       .fast-modal-backdrop,.fast-info-backdrop,.fast-legal-backdrop{padding:10px;align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-      .fast-modal,.fast-info-modal,.fast-legal-modal{width:100%;border-radius:16px;max-height:calc(100vh - 20px);margin:auto 0;}
+      .fast-modal,.fast-info-modal,.fast-legal-modal{width:100%;border-radius:16px;max-height:calc(100dvh - 20px);margin:auto 0;}
       .fast-modal-header{padding:14px 14px;}
       .fast-modal-title{font-size:15px;padding-right:8px;}
       .fast-modal-body,.fast-info-body,.fast-legal-body{padding:14px;}
@@ -144,7 +144,7 @@
       .fast-modal-body,.fast-info-body,.fast-legal-body{padding:12px;}
       .fast-info-hero{height:150px;}
       .fast-btn{padding:12px 14px;font-size:14px;min-height:44px;}
-      .fast-modal{max-height:calc(100vh - 12px);}
+      .fast-modal{max-height:calc(100dvh - 12px);}
       .fast-modal-backdrop{padding:6px;}
     }
 
@@ -156,7 +156,7 @@
     .fast-modal{
       width:min(720px,100%);background:#fff;border-radius:18px;
       box-shadow:0 30px 90px rgba(0,0,0,.25);overflow:hidden;
-      display:flex;flex-direction:column;max-height:calc(100vh - 36px);
+      display:flex;flex-direction:column;max-height:calc(100dvh - 36px);
     }
     .fast-modal-header{
       display:flex;align-items:center;justify-content:space-between;padding:16px 18px;
@@ -173,7 +173,7 @@
       padding:6px 10px;border-radius:10px;
     }
     .fast-modal-close:hover{background:#e9eef7;}
-    .fast-modal-body{padding:18px;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;touch-action:pan-y;}
+    .fast-modal-body{padding:18px;flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;touch-action:pan-y;overscroll-behavior:contain;}
 
     .fast-step{display:none;opacity:0;transform:translateY(6px);transition:opacity 200ms ease,transform 200ms ease;}
     .fast-step.active{display:block;opacity:1;transform:translateY(0);}

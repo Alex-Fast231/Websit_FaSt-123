@@ -2,6 +2,103 @@
     const byId = (id) => document.getElementById(id);
     function req(val){ return (val || "").trim().length > 0; }
 
+    // ===== EmailJS config =====
+    const EMAILJS_CONFIG = {
+      publicKey: "BITTE_EMAILJS_PUBLIC_KEY_EINTRAGEN",
+      serviceId: "BITTE_EMAILJS_SERVICE_ID_EINTRAGEN",
+      templates: {
+        einrichtung: "BITTE_TEMPLATE_ID_EINRICHTUNG_EINTRAGEN",
+        therapeut: "BITTE_TEMPLATE_ID_THERAPEUT_EINTRAGEN",
+        kontakt: "BITTE_TEMPLATE_ID_KONTAKT_EINTRAGEN"
+      }
+    };
+
+    function emailJsReady(){
+      return typeof window.emailjs !== "undefined"
+        && EMAILJS_CONFIG.publicKey
+        && !EMAILJS_CONFIG.publicKey.startsWith("BITTE_")
+        && EMAILJS_CONFIG.serviceId
+        && !EMAILJS_CONFIG.serviceId.startsWith("BITTE_")
+        && EMAILJS_CONFIG.templates.einrichtung
+        && !EMAILJS_CONFIG.templates.einrichtung.startsWith("BITTE_")
+        && EMAILJS_CONFIG.templates.therapeut
+        && !EMAILJS_CONFIG.templates.therapeut.startsWith("BITTE_")
+        && EMAILJS_CONFIG.templates.kontakt
+        && !EMAILJS_CONFIG.templates.kontakt.startsWith("BITTE_");
+    }
+
+    if(typeof window.emailjs !== "undefined"){
+      try {
+        window.emailjs.init({
+          publicKey: EMAILJS_CONFIG.publicKey,
+          blockHeadless: true,
+          limitRate: {
+            id: "fast-website",
+            throttle: 10000
+          }
+        });
+      } catch (err) {
+        console.warn("EmailJS konnte nicht initialisiert werden.", err);
+      }
+    }
+
+    function setButtonLoading(button, isLoading, loadingText, defaultText){
+      if(!button) return;
+      if(!button.dataset.defaultText){
+        button.dataset.defaultText = defaultText || button.textContent.trim();
+      }
+      button.disabled = !!isLoading;
+      button.textContent = isLoading ? loadingText : (defaultText || button.dataset.defaultText);
+      button.style.opacity = isLoading ? "0.75" : "";
+      button.style.cursor = isLoading ? "wait" : "";
+    }
+
+    function resetEinrichtungForm(){
+      ["eName","eStreet","eZip","eCity","eNeed","eSal","eContactName","ePhone","eEmail","eMsg"].forEach(id => {
+        const el = byId(id);
+        if(el) el.value = "";
+      });
+      const consent = byId("eConsent");
+      if(consent) consent.checked = false;
+    }
+
+    function resetTherapeutForm(){
+      tState.step1 = "";
+      tState.step2 = "";
+      tState.step4 = "";
+      ["tQualMT","tQualZNS","tQualMLD","tQualAzubi","tQualNone","cUseMT","cUseZNS","tConsent"].forEach(id => {
+        const el = byId(id);
+        if(el) el.checked = false;
+      });
+      ["cHours","cDays","cKG","cMT","cZNS","tGender","tName","tEmail","tPhone","tZip","tCity"].forEach(id => {
+        const el = byId(id);
+        if(el) el.value = "";
+      });
+      const cMT = byId("cMT");
+      const cZNS = byId("cZNS");
+      if(cMT) cMT.disabled = true;
+      if(cZNS) cZNS.disabled = true;
+      const resultBox = byId("cResultBox");
+      if(resultBox) resultBox.style.display = "none";
+      updateQualHint();
+    }
+
+    function resetKontaktForm(){
+      ["kName","kEmail","kPhone","kMsg"].forEach(id => {
+        const el = byId(id);
+        if(el) el.value = "";
+      });
+      const consent = byId("kConsent");
+      if(consent) consent.checked = false;
+    }
+
+    async function sendViaEmailJS(templateId, templateParams){
+      if(!emailJsReady()){
+        throw new Error("EmailJS ist noch nicht vollständig konfiguriert. Bitte Public Key, Service ID und Template IDs eintragen.");
+      }
+      return window.emailjs.send(EMAILJS_CONFIG.serviceId, templateId, templateParams);
+    }
+
     // ===== Legal content =====
     const LEGAL = {
   impressum: `
@@ -63,7 +160,8 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
     <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf die Anbahnung oder Durchführung eines Vertrags gerichtet ist, sowie im Übrigen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an der Bearbeitung von Anfragen.</p>
 
     <h2>4. Kontaktformulare auf dieser Website</h2>
-    <p>Die auf dieser Website eingebundenen Formulare öffnen aktuell Ihr E-Mail-Programm über eine mailto-Funktion. Dabei werden die von Ihnen eingetragenen Daten erst dann an uns übermittelt, wenn Sie den Versand der E-Mail in Ihrem eigenen E-Mail-Programm aktiv bestätigen. Eine automatische Speicherung der Formulardaten auf dieser Website erfolgt durch diese Funktion nicht.</p>
+    <p>Wenn Sie ein Kontaktformular auf dieser Website absenden, werden die von Ihnen eingegebenen Angaben zur Bearbeitung Ihrer Anfrage an uns übermittelt. Die Übermittlung erfolgt über den Dienst EmailJS. Verarbeitet werden dabei insbesondere Ihr Name, Ihre E-Mail-Adresse, Ihre Telefonnummer, Ihre Nachricht sowie weitere von Ihnen freiwillig angegebene Informationen.</p>
+    <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf die Anbahnung oder Durchführung eines Vertrags gerichtet ist, sowie im Übrigen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an einer einfachen und nutzerfreundlichen Kommunikation.</p>
 
     <h2>5. Empfänger der Daten</h2>
     <p>Ihre Daten werden grundsätzlich nicht an Dritte weitergegeben, es sei denn, dies ist zur Bearbeitung Ihrer Anfrage erforderlich, gesetzlich vorgeschrieben oder anderweitig rechtlich zulässig.</p>
@@ -151,7 +249,7 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
 
     byId("eBack3").addEventListener("click",()=>showStep(2));
 
-    byId("eSend").addEventListener("click",()=>{
+    byId("eSend").addEventListener("click", async ()=>{
       const ok = req(byId("eContactName").value) && req(byId("ePhone").value) && req(byId("eEmail").value);
       if(!ok){ alert("Bitte füllen Sie Name, Telefon und E-Mail aus."); return; }
 
@@ -160,39 +258,39 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
         return;
       }
 
-const recipient = "info@physio-fast.de";
-      const subject = "FaSt – Bedarfsmeldung (Einrichtung)";
-      const bodyLines = [
-        "BEDARFSMELDUNG – EINRICHTUNG",
-        "",
-        "Einrichtung:",
-        byId("eName").value,
-        "",
-        "Adresse:",
-        byId("eStreet").value,
-        byId("eZip").value + " " + byId("eCity").value,
-        "",
-        "Bedarfseinschätzung (Anzahl Bewohner mit Bedarf):",
-        byId("eNeed").value,
-        "",
-        "Ansprechpartner:",
-        (byId("eSal").value ? byId("eSal").value + " " : "") + byId("eContactName").value,
-        "Telefon: " + byId("ePhone").value,
-        "E-Mail: " + byId("eEmail").value,
-        "",
-        "Nachricht:",
-        (byId("eMsg").value || "—"),
-        "",
-        "Hinweis: Unverbindliche Bedarfsermittlung über die FaSt-Website."
-      ];
+      const sendButton = byId("eSend");
+      setButtonLoading(sendButton, true, "Wird gesendet…", "Direkt senden");
 
-      const mailto = "mailto:" + encodeURIComponent(recipient)
-        + "?subject=" + encodeURIComponent(subject)
-        + "&body=" + encodeURIComponent(bodyLines.join("\n"));
+      const templateParams = {
+        to_email: "info@physio-fast.de",
+        subject: "FaSt – Bedarfsmeldung (Einrichtung)",
+        form_type: "Einrichtung",
+        einrichtung_name: byId("eName").value.trim(),
+        einrichtung_street: byId("eStreet").value.trim(),
+        einrichtung_zip: byId("eZip").value.trim(),
+        einrichtung_city: byId("eCity").value.trim(),
+        einrichtung_need: byId("eNeed").value,
+        contact_salutation: byId("eSal").value || "—",
+        contact_name: byId("eContactName").value.trim(),
+        contact_phone: byId("ePhone").value.trim(),
+        contact_email: byId("eEmail").value.trim(),
+        message: byId("eMsg").value.trim() || "—"
+      };
 
-      window.location.href = mailto;
+      try {
+        await sendViaEmailJS(EMAILJS_CONFIG.templates.einrichtung, templateParams);
+        alert("Vielen Dank. Ihre Anfrage wurde direkt versendet.");
+        resetEinrichtungForm();
+        closeModal();
+      } catch (err) {
+        console.error(err);
+        alert("Direktes Senden war nicht möglich. Bitte prüfen Sie die EmailJS-Konfiguration oder schreiben Sie an info@physio-fast.de.");
+      } finally {
+        setButtonLoading(sendButton, false, "Wird gesendet…", "Direkt senden");
+      }
     });
 
+    // ===== Therapeut Modal =====
     // ===== Therapeut Modal =====
     const tState = { step1:"", step2:"", step4:"" };
     function showTStep(n){
@@ -291,7 +389,7 @@ const recipient = "info@physio-fast.de";
 
     byId("tNext5").addEventListener("click",()=>showTStep(6));
 
-    byId("tSend").addEventListener("click",()=>{
+    byId("tSend").addEventListener("click", async ()=>{
       const name  = (byId("tName").value  || "").trim();
       const email = (byId("tEmail").value || "").trim();
       const zip   = (byId("tZip").value   || "").trim();
@@ -315,44 +413,44 @@ const recipient = "info@physio-fast.de";
       if(byId("tQualNone").checked) quals.push("Keine Zusatzqualifikation");
       const qualsStr = quals.length ? quals.join(", ") : "—";
 
-const recipient = "info@physio-fast.de";
-      const subject = "FaSt – Therapeuteninteresse";
+      const sendButton = byId("tSend");
+      setButtonLoading(sendButton, true, "Wird gesendet…", "Interesse direkt senden");
 
-      const bodyLines = [
-        "THERAPEUTENINTERESSE – FaSt",
-        "",
-        "Antworten:",
-        "Arbeitsfeld (Einrichtungen): " + (tState.step1 || "—"),
-        "Arbeitsweise (Selbst strukturieren): " + (tState.step2 || "—"),
-        "Modell: " + (tState.step4 || "—"),
-        "",
-        "Zusatzqualifikationen: " + qualsStr,
-        "",
-        "Rechner (Angaben):",
-        "Stunden/Woche: " + (byId("cHours").value || "—"),
-        "Tage/Woche: " + (byId("cDays").value || "—"),
-        "KG%: " + (byId("cKG").value || "0"),
-        "MT%: " + (byId("cUseMT").checked ? (byId("cMT").value || "0") : "nicht berücksichtigt"),
-        "KG-ZNS%: " + (byId("cUseZNS").checked ? (byId("cZNS").value || "0") : "nicht berücksichtigt"),
-        "",
-        "Kontakt:",
-        "m/w/d: " + (byId("tGender").value || "—"),
-        "Name: " + name,
-        "E-Mail: " + email,
-        "Telefon: " + (byId("tPhone").value || "—"),
-        "PLZ: " + zip,
-        "Ort: " + city,
-        "",
-        "Hinweis: Unverbindliche Interessensbekundung über die FaSt-Website."
-      ];
+      const templateParams = {
+        to_email: "info@physio-fast.de",
+        subject: "FaSt – Therapeuteninteresse",
+        form_type: "Therapeut",
+        arbeitsfeld: tState.step1 || "—",
+        arbeitsweise: tState.step2 || "—",
+        modell: tState.step4 || "—",
+        qualifikationen: qualsStr,
+        hours_week: byId("cHours").value || "—",
+        days_week: byId("cDays").value || "—",
+        kg_share: byId("cKG").value || "0",
+        mt_share: byId("cUseMT").checked ? (byId("cMT").value || "0") : "nicht berücksichtigt",
+        zns_share: byId("cUseZNS").checked ? (byId("cZNS").value || "0") : "nicht berücksichtigt",
+        gender: byId("tGender").value || "—",
+        name: name,
+        email: email,
+        phone: byId("tPhone").value.trim() || "—",
+        zip: zip,
+        city: city
+      };
 
-      const mailto = "mailto:" + encodeURIComponent(recipient)
-        + "?subject=" + encodeURIComponent(subject)
-        + "&body=" + encodeURIComponent(bodyLines.join("\n"));
-
-      window.location.href = mailto;
+      try {
+        await sendViaEmailJS(EMAILJS_CONFIG.templates.therapeut, templateParams);
+        alert("Vielen Dank. Dein Interesse wurde direkt versendet.");
+        resetTherapeutForm();
+        closeTherapeut();
+      } catch (err) {
+        console.error(err);
+        alert("Direktes Senden war nicht möglich. Bitte prüfe die EmailJS-Konfiguration oder schreibe an info@physio-fast.de.");
+      } finally {
+        setButtonLoading(sendButton, false, "Wird gesendet…", "Interesse direkt senden");
+      }
     });
 
+    // Qual logic (None unchecks others & vice versa)
     // Qual logic (None unchecks others & vice versa)
     (function initQualLogicWithRetry(){
       function wireQualLogic(){
@@ -413,7 +511,7 @@ const recipient = "info@physio-fast.de";
 
     byId("modalKontakt").addEventListener("click",(e)=>{ if(e.target === byId("modalKontakt")) closeKontakt(); });
 
-    byId("kSend").addEventListener("click",()=>{
+    byId("kSend").addEventListener("click", async ()=>{
       const name  = (byId("kName").value || "").trim();
       const email = (byId("kEmail").value || "").trim();
       const msg   = (byId("kMsg").value || "").trim();
@@ -428,27 +526,33 @@ const recipient = "info@physio-fast.de";
         return;
       }
 
-const recipient = "info@physio-fast.de";
-      const subject = "FaSt – Kontaktanfrage Website";
+      const sendButton = byId("kSend");
+      setButtonLoading(sendButton, true, "Wird gesendet…", "Nachricht direkt senden");
 
-      const bodyLines = [
-        "KONTAKTANFRAGE – Website",
-        "",
-        "Name: " + name,
-        "E-Mail: " + email,
-        "Telefon: " + (byId("kPhone").value || "—"),
-        "",
-        "Nachricht:",
-        msg
-      ];
+      const templateParams = {
+        to_email: "info@physio-fast.de",
+        subject: "FaSt – Kontaktanfrage Website",
+        form_type: "Kontakt",
+        name: name,
+        email: email,
+        phone: byId("kPhone").value.trim() || "—",
+        message: msg
+      };
 
-      const mailto = "mailto:" + encodeURIComponent(recipient)
-        + "?subject=" + encodeURIComponent(subject)
-        + "&body=" + encodeURIComponent(bodyLines.join("\n"));
-
-      window.location.href = mailto;
+      try {
+        await sendViaEmailJS(EMAILJS_CONFIG.templates.kontakt, templateParams);
+        alert("Vielen Dank. Ihre Nachricht wurde direkt versendet.");
+        resetKontaktForm();
+        closeKontakt();
+      } catch (err) {
+        console.error(err);
+        alert("Direktes Senden war nicht möglich. Bitte prüfen Sie die EmailJS-Konfiguration oder schreiben Sie an info@physio-fast.de.");
+      } finally {
+        setButtonLoading(sendButton, false, "Wird gesendet…", "Nachricht direkt senden");
+      }
     });
 
+    // ===== Global ESC closes topmost modal =====
     // ===== Global ESC closes topmost modal =====
     document.addEventListener("keydown", function(e){
       if(e.key !== "Escape") return;

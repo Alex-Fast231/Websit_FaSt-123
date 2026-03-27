@@ -1,0 +1,4 @@
+Lege hier die beiden Bilder ab:
+- bild-startseite.jpg
+- bild-lerne-uns-kennen.jpg
+Der Code nutzt diese Dateien automatisch. Wenn sie fehlen, greift eine Online-Fallback-Grafik.

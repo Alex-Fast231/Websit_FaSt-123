@@ -503,6 +503,31 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
 
     byId("fastInfoBackdrop").addEventListener("click",(e)=>{ if(e.target === byId("fastInfoBackdrop")) closeFastInfo(); });
 
+    // ===== Team Modal =====
+    function openTeam(){
+      const backdrop = byId("fastTeamBackdrop");
+      if(!backdrop) return;
+      backdrop.classList.add("active");
+    }
+    function closeTeam(){
+      const backdrop = byId("fastTeamBackdrop");
+      if(!backdrop) return;
+      backdrop.classList.remove("active");
+    }
+
+    (function(){
+      const btn = byId("btnTeam");
+      const closeX = byId("closeTeam");
+      const closeBtn = byId("closeTeamBtn");
+      const backdrop = byId("fastTeamBackdrop");
+      if(btn) btn.addEventListener("click", openTeam);
+      if(closeX) closeX.addEventListener("click", closeTeam);
+      if(closeBtn) closeBtn.addEventListener("click", closeTeam);
+      if(backdrop){
+        backdrop.addEventListener("click", (e)=>{ if(e.target === backdrop) closeTeam(); });
+      }
+    })();
+
     // ===== Kontakt Modal =====
     function openKontakt(){ byId("modalKontakt").style.display = "flex"; }
     function closeKontakt(){ byId("modalKontakt").style.display = "none"; }
@@ -562,7 +587,19 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
       const legal = byId("fastLegalBackdrop");
       if(legal && legal.classList.contains("active")){ closeLegal(); return; }
 
+      const team = byId("fastTeamBackdrop");
+      if(team && team.classList.contains("active")){ closeTeam(); return; }
+
       const info = byId("fastInfoBackdrop");
       if(info && info.classList.contains("active")){ closeFastInfo(); return; }
+
+      const kontakt = byId("modalKontakt");
+      if(kontakt && kontakt.style.display === "flex"){ closeKontakt(); return; }
+
+      const therapeut = byId("modalTherapeut");
+      if(therapeut && therapeut.style.display === "flex"){ closeTherapeut(); return; }
+
+      const einrichtung = byId("modalEinrichtung");
+      if(einrichtung && einrichtung.style.display === "flex"){ closeModal(); return; }
     });
   

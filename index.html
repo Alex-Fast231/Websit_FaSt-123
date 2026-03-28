@@ -12,7 +12,10 @@
     <!-- Header -->
     <div class="fast-header">
       <div class="fast-logo-text">FaSt - Physiotherapie in sozialen Einrichtungen</div>
-      <button class="fast-contact-btn" id="btnKontakt" type="button">Kontakt</button>
+      <div class="fast-header-actions">
+        <button class="fast-header-btn fast-team-btn" id="btnTeam" type="button">Team</button>
+        <button class="fast-header-btn fast-contact-btn" id="btnKontakt" type="button">Kontakt</button>
+      </div>
     </div>
 
     <!-- Hero -->
@@ -34,7 +37,7 @@
         <div class="fast-logo-card" id="btnFastInfo" role="button" tabindex="0" aria-label="Mehr über FaSt erfahren">
 <img src="assets/bild-startseite.jpg" alt="Physiotherapie in sozialer Einrichtung" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/d74973_8f9525916bf040d19f8e4dbd513a578b~mv2.jpeg';">
         </div>
-        <div class="fast-logo-cta" id="btnFastInfoText">Physiotherapie neu gedacht in sozialen Einrichtungen</div>
+        <div class="fast-logo-cta" id="btnFastInfoText">Physiotherapie in sozialen Einrichtungen neu gedacht</div>
       </div>
     </div>
 
@@ -493,6 +496,143 @@
 
         <div class="fast-actions" style="justify-content:flex-end; margin-top:16px;">
           <button class="fast-btn primary" type="button" onclick="closeFastInfo()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal: Team ===== -->
+  <div id="fastTeamBackdrop" class="fast-team-backdrop">
+    <div class="fast-team-modal" id="fastTeamModal" role="dialog" aria-modal="true" aria-labelledby="teamTitle">
+      <div class="fast-modal-header">
+        <div class="fast-modal-title" id="teamTitle">Unser Team</div>
+        <div class="fast-modal-close" id="closeTeam">×</div>
+      </div>
+
+      <div class="fast-team-body">
+        <p class="fast-team-lead">Ein erfahrenes Team, spezialisiert auf die physiotherapeutische Versorgung in sozialen Einrichtungen.</p>
+
+        <div class="fast-team-list">
+          <article class="fast-team-card" data-member="matthias">
+            <div class="fast-team-visual">
+              <img src="assets/team-matthias.jpg" alt="Matthias" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Matthias</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Matthias</h3>
+              <div class="fast-team-role">Praxisinhaber</div>
+              <div class="fast-team-tags">Osteopathie · Orthopädie</div>
+              <p>Fokus auf nachhaltige Behandlung komplexer Beschwerden und individuelle Therapiekonzepte.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="alex">
+            <div class="fast-team-visual">
+              <img src="assets/team-alex.jpg" alt="Alex" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Alex</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Alex</h3>
+              <div class="fast-team-role">Leitung FaSt</div>
+              <div class="fast-team-tags">Geriatrie · Versorgung in sozialen Einrichtungen</div>
+              <p>Verantwortlich für Organisation, Struktur und die therapeutische Betreuung vor Ort. Ansprechpartner für Einrichtungen und Therapeuten.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="therapeut-1">
+            <div class="fast-team-visual">
+              <img src="assets/team-therapeut-1.jpg" alt="Therapeut 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Therapeut 1</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Therapeut 1</h3>
+              <div class="fast-team-role">Therapeut:in</div>
+              <div class="fast-team-tags">Geriatrie · Atemtherapie · Orthopädie</div>
+              <p>Schwerpunkt auf funktioneller Verbesserung und Unterstützung im Alltag.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="therapeut-2">
+            <div class="fast-team-visual">
+              <img src="assets/team-therapeut-2.jpg" alt="Therapeut 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Therapeut 2</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Therapeut 2</h3>
+              <div class="fast-team-role">Therapeut:in</div>
+              <div class="fast-team-tags">Geriatrie · Orthopädie · Mobilität im Alter</div>
+              <p>Fokus auf sichere Mobilisation und Erhalt der Selbstständigkeit.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="therapeut-3">
+            <div class="fast-team-visual">
+              <img src="assets/team-therapeut-3.jpg" alt="Therapeut 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Therapeut 3</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Therapeut 3</h3>
+              <div class="fast-team-role">Therapeut:in</div>
+              <div class="fast-team-tags">Geriatrie · Orthopädie · mobile Therapie</div>
+              <p>Fokus auf individuelle Therapieplanung und alltagsnahe Umsetzung im gewohnten Umfeld.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="therapeut-4">
+            <div class="fast-team-visual">
+              <img src="assets/team-therapeut-4.jpg" alt="Therapeut 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Therapeut 4</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Therapeut 4</h3>
+              <div class="fast-team-role">Therapeut:in</div>
+              <div class="fast-team-tags">Orthopädie · Geriatrie · mobile Versorgung</div>
+              <p>Behandlung mit Fokus auf alltagsnahe Bewegungsabläufe und Stabilität.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="therapeut-5">
+            <div class="fast-team-visual">
+              <img src="assets/team-therapeut-5.jpg" alt="Therapeut 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Therapeut 5</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Therapeut 5</h3>
+              <div class="fast-team-role">Therapeut:in</div>
+              <div class="fast-team-tags">Geriatrie · Orthopädie</div>
+              <p>Strukturierte Therapie mit Fokus auf Kräftigung und Stabilität.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="therapeut-6">
+            <div class="fast-team-visual">
+              <img src="assets/team-therapeut-6.jpg" alt="Therapeut 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Therapeut 6</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Therapeut 6</h3>
+              <div class="fast-team-role">Therapeut:in</div>
+              <div class="fast-team-tags">Orthopädie · Geriatrie · mobile Versorgung</div>
+              <p>Aktivierende Therapie zur Förderung von Beweglichkeit und Kraft.</p>
+            </div>
+          </article>
+
+          <article class="fast-team-card" data-member="therapeut-7">
+            <div class="fast-team-visual">
+              <img src="assets/team-therapeut-7.jpg" alt="Therapeut 7" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fast-team-placeholder">Bild Therapeut 7</div>
+            </div>
+            <div class="fast-team-content">
+              <h3>Therapeut 7</h3>
+              <div class="fast-team-role">Therapeut:in</div>
+              <div class="fast-team-tags">Geriatrie · Orthopädie · mobile Versorgung</div>
+              <p>Fokus auf langfristige Fortschritte und stabile Behandlungsergebnisse.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="fast-actions" style="justify-content:flex-end; margin-top:18px;">
+          <button class="fast-btn primary" type="button" id="closeTeamBtn">OK</button>
         </div>
       </div>
     </div>

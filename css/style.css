@@ -68,7 +68,7 @@
       pointer-events:none;
     }
     .fast-card:after{
-      content:"Jetzt öffnen →";
+      content:"Jetzt informieren →";
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -128,7 +128,8 @@
       .fast-container{max-width:100%;}
       .fast-header{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;margin-bottom:20px;}
       .fast-logo-text{text-align:left;font-size:20px;line-height:1.3;max-width:100%;}
-      .fast-contact-btn{position:static;margin-left:0;align-self:flex-start;width:auto;}
+      .fast-header-actions{position:static;right:auto;width:100%;justify-content:flex-start;flex-wrap:wrap;}
+      .fast-header-btn{align-self:flex-start;width:auto;}
       .fast-hero-content{flex-direction:column;gap:22px;}
       .fast-text,.fast-image{width:100%;}
       .headline-box{display:block;width:100%;padding:14px 16px;border-radius:14px;box-sizing:border-box;}
@@ -159,11 +160,11 @@
       .fast-field input,.fast-field select,.fast-field textarea{font-size:16px;box-sizing:border-box;width:100%;}
       .fast-actions{flex-direction:column;align-items:stretch;}
       .fast-actions .fast-btn{width:100%;}
-      .fast-modal-backdrop,.fast-info-backdrop,.fast-legal-backdrop{padding:10px;align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-      .fast-modal,.fast-info-modal,.fast-legal-modal{width:100%;border-radius:16px;max-height:calc(100dvh - 20px);margin:auto 0;}
+      .fast-modal-backdrop,.fast-info-backdrop,.fast-legal-backdrop,.fast-team-backdrop{padding:10px;align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+      .fast-modal,.fast-info-modal,.fast-legal-modal,.fast-team-modal{width:100%;border-radius:16px;max-height:calc(100dvh - 20px);margin:auto 0;}
       .fast-modal-header{padding:14px 14px;}
       .fast-modal-title{font-size:15px;padding-right:8px;}
-      .fast-modal-body,.fast-info-body,.fast-legal-body{padding:14px;}
+      .fast-modal-body,.fast-info-body,.fast-legal-body,.fast-team-body{padding:14px;}
       .fast-h{font-size:19px;line-height:1.3;}
       .fast-help{font-size:15px;line-height:1.55;}
       .fast-choice-btn{padding:14px 12px;font-size:15px;}
@@ -183,7 +184,7 @@
       .fast-region-banner{font-size:13.5px;padding:16px 14px 16px 16px;}
       .fast-footer button{font-size:13px;}
       .fast-modal-header{padding:12px 12px;}
-      .fast-modal-body,.fast-info-body,.fast-legal-body{padding:12px;}
+      .fast-modal-body,.fast-info-body,.fast-legal-body,.fast-team-body{padding:12px;}
       .fast-info-hero{height:180px;}
       .fast-btn{padding:12px 14px;font-size:14px;min-height:44px;}
       .fast-modal{max-height:calc(100dvh - 12px);}
@@ -318,6 +319,9 @@
       font-size:15px;
       box-shadow:0 12px 26px rgba(15,58,99,.18);
       max-width:100%;
+      width:100%;
+      box-sizing:border-box;
+      white-space:normal;
       text-align:center;
     }
     .fast-logo-cta:after{content:"→";font-size:16px;line-height:1;}
@@ -364,6 +368,51 @@
     .fast-info-card h3{margin:0 0 10px 0;padding-left:12px;font-size:16px;font-weight:900;color:#0f1f3d;}
     .fast-info-card ul{margin:0;padding-left:28px;color:#334155;line-height:1.55;font-size:14px;}
     .fast-info-card li{margin:8px 0;}
+
+    /* ===== Team Modal ===== */
+    .fast-team-backdrop{
+      position:fixed;inset:0;background:rgba(10,20,30,.45);
+      z-index:99998;display:none;align-items:center;justify-content:center;padding:22px;
+    }
+    .fast-team-backdrop.active{display:flex;}
+    .fast-team-modal{
+      width:min(980px,calc(100vw - 32px));
+      background:#fff;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.25);
+      overflow:hidden;max-height:calc(100vh - 44px);display:flex;flex-direction:column;
+    }
+    .fast-team-body{padding:18px 20px 20px;overflow:auto;}
+    .fast-team-lead{margin:0 0 16px 0;color:#1f2937;font-size:16px;line-height:1.65;font-weight:500;max-width:920px;}
+    .fast-team-list{display:flex;flex-direction:column;gap:14px;}
+    .fast-team-card{
+      display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:center;
+      background:#fff;border:1px solid rgba(15,58,99,.12);border-radius:18px;padding:16px;
+      box-shadow:0 14px 35px rgba(0,0,0,.04);position:relative;overflow:hidden;
+    }
+    .fast-team-card:before{
+      content:"";position:absolute;left:0;top:16px;bottom:16px;width:4px;border-radius:4px;
+      background:linear-gradient(180deg,#0f3a63,#43a047);opacity:.95;
+    }
+    .fast-team-visual{position:relative;width:100%;aspect-ratio:1 / 1;border-radius:16px;overflow:hidden;background:#eef2f7;}
+    .fast-team-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+    .fast-team-placeholder{
+      position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;
+      padding:16px;font-size:15px;font-weight:800;color:#0f3a63;
+      background:linear-gradient(135deg,rgba(15,58,99,.08),rgba(67,160,71,.10));
+    }
+    .fast-team-content h3{margin:0;color:#0f1f3d;font-size:22px;font-weight:900;}
+    .fast-team-role{margin-top:4px;color:#0f3a63;font-size:14px;font-weight:800;}
+    .fast-team-tags{margin-top:10px;color:#334155;font-size:14px;font-weight:700;line-height:1.5;}
+    .fast-team-content p{margin:10px 0 0;color:#334155;font-size:15px;line-height:1.65;}
+    @media(max-width:900px){
+      .fast-team-card{grid-template-columns:112px 1fr;gap:14px;padding:14px;}
+      .fast-team-content h3{font-size:20px;}
+    }
+    @media(max-width:640px){
+      .fast-team-card{grid-template-columns:1fr;}
+      .fast-team-visual{max-width:140px;}
+      .fast-team-content h3{font-size:19px;}
+      .fast-team-tags,.fast-team-content p{font-size:14px;}
+    }
 
     /* ===== Legal Modal (Impressum / Datenschutz) ===== */
     .fast-legal-backdrop{

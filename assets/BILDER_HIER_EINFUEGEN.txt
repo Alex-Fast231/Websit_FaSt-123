@@ -1,4 +1,21 @@
-Lege hier die beiden Bilder ab:
+Bilder für die Website hier in den assets-Ordner legen.
+
+Startseite:
 - bild-startseite.jpg
 - bild-lerne-uns-kennen.jpg
-Der Code nutzt diese Dateien automatisch. Wenn sie fehlen, greift eine Online-Fallback-Grafik.
+
+Team-Overlay:
+- team-matthias.jpg
+- team-alex.jpg
+- team-therapeut-1.jpg
+- team-therapeut-2.jpg
+- team-therapeut-3.jpg
+- team-therapeut-4.jpg
+- team-therapeut-5.jpg
+- team-therapeut-6.jpg
+- team-therapeut-7.jpg
+
+Hinweis:
+Sobald die Einwilligungen vorliegen, können in index.html die Platzhalter-Namen
+"Therapeut 1" bis "Therapeut 7" einfach gegen die echten Namen ersetzt werden.
+Die Bilddateien können dann passend ebenfalls umbenannt und im img-src angepasst werden.

@@ -14,16 +14,20 @@
       font-weight:700;font-size:26px;letter-spacing:.3px;
       color:#0f1f3d;text-align:center;
     }
-    .fast-contact-btn{position:absolute;right:0;}
-    .fast-contact-btn{
-      display:inline-block;padding:10px 18px;background-color:#005b8f;color:#fff;
+    .fast-header-actions{position:absolute;right:0;display:flex;gap:10px;align-items:center;}
+    .fast-header-btn{
+      display:inline-block;padding:10px 18px;color:#fff;
       border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;
       transition:all .2s ease;border:0;cursor:pointer;
     }
-    .fast-contact-btn:hover{
-      background-color:#004a73;transform:translateY(-1px);
+    .fast-header-btn:hover{
+      transform:translateY(-1px);
       box-shadow:0 8px 20px rgba(0,0,0,.15);
     }
+    .fast-contact-btn{background-color:#005b8f;}
+    .fast-contact-btn:hover{background-color:#004a73;}
+    .fast-team-btn{background-color:#43a047;}
+    .fast-team-btn:hover{background-color:#2f7d32;}
 
     /* Hero */
     .fast-hero-content{display:flex;align-items:center;gap:50px;}

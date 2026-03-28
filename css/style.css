@@ -71,7 +71,7 @@
       background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,0));
       pointer-events:none;
     }
-    .fast-card:after{
+    .fast-card.einrichtung:after{
       content:"Jetzt informieren →";
       display:inline-flex;
       align-items:center;
@@ -94,6 +94,8 @@
     .fast-card:focus-visible{outline:3px solid rgba(15,31,61,.2);outline-offset:2px;}
     .fast-card.einrichtung{background:linear-gradient(135deg,#0a5c83 0%,#0f7bb5 100%);}
     .fast-card.therapeut{background:linear-gradient(135deg,#2f7d32 0%,#43a047 100%);}
+    .fast-card.therapeut{display:flex;align-items:center;justify-content:center;text-align:center;}
+    .fast-card.therapeut h3{margin:0;}
 
     .fast-region-banner{
       margin-top:28px;padding:22px 26px;border-radius:18px;
@@ -220,6 +222,35 @@
       padding:6px 10px;border-radius:10px;
     }
     .fast-modal-close:hover{background:#e9eef7;}
+
+    #modalEinrichtung .fast-modal-header{
+      background:#005b8f;
+    }
+    #modalEinrichtung .fast-modal-header:after{
+      background:#005b8f;
+    }
+    #modalEinrichtung .fast-modal-title,
+    #modalEinrichtung .fast-modal-close{
+      color:#ffffff;
+    }
+    #modalEinrichtung .fast-modal-close:hover{
+      background:rgba(255,255,255,.14);
+    }
+
+    #modalTherapeut .fast-modal-header{
+      background:#43a047;
+    }
+    #modalTherapeut .fast-modal-header:after{
+      background:#43a047;
+    }
+    #modalTherapeut .fast-modal-title,
+    #modalTherapeut .fast-modal-close{
+      color:#ffffff;
+    }
+    #modalTherapeut .fast-modal-close:hover{
+      background:rgba(255,255,255,.14);
+    }
+
     .fast-modal-body{padding:18px;flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;touch-action:pan-y;overscroll-behavior:contain;}
 
     .fast-step{display:none;opacity:0;transform:translateY(6px);transition:opacity 200ms ease,transform 200ms ease;}

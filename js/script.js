@@ -230,6 +230,8 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
     function resetEinrichtung(){ showStep(1); }
 
     byId("btnEinrichtung").addEventListener("click", openModal);
+    const btnEinrichtungMobile = byId("btnEinrichtungMobile");
+    if(btnEinrichtungMobile) btnEinrichtungMobile.addEventListener("click", openModal);
     byId("closeEinrichtung").addEventListener("click", closeModal);
     byId("eCancel1").addEventListener("click", closeModal);
 

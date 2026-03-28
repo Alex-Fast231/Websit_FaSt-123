@@ -71,22 +71,6 @@
       background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,0));
       pointer-events:none;
     }
-    .fast-card.einrichtung:after{
-      content:"Jetzt informieren →";
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      margin-top:18px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.28);
-      color:#fff;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.2px;
-      box-shadow:0 10px 24px rgba(0,0,0,.10);
-    }
     .fast-card h3,.fast-card p{position:relative;z-index:1;}
     .fast-card h3{margin:0 0 10px 0;font-size:22px;line-height:1.25;color:#fff;}
     .fast-card p{margin:0;font-size:15px;color:rgba(255,255,255,.94);line-height:1.6;max-width:38ch;}

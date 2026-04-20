@@ -308,7 +308,7 @@
 
     // ===== Therapeut Modal =====
     // ===== Therapeut Modal =====
-    const tState = { step1:"", step2:"", step4:"" };
+    const tState = { step1:"", step2:"", step4:"nicht abgefragt" };
     function showTStep(n){
       const ids = ["tStep1","tStep2","tStep3","tStep4","tStep5","tStep6"];
       ids.forEach(id => byId(id).classList.remove("active"));
@@ -326,8 +326,8 @@
     byId("tBack2").addEventListener("click",()=>showTStep(1));
     byId("tBack3").addEventListener("click",()=>showTStep(2));
     byId("tBack4").addEventListener("click",()=>showTStep(3));
-    byId("tBack5").addEventListener("click",()=>showTStep(4));
-    byId("tBack5b").addEventListener("click",()=>showTStep(4));
+    byId("tBack5").addEventListener("click",()=>showTStep(3));
+    byId("tBack5b").addEventListener("click",()=>showTStep(3));
     byId("tBack6").addEventListener("click",()=>showTStep(5));
 
     document.querySelectorAll("#modalTherapeut .fast-choice-btn").forEach(btn=>{
@@ -350,7 +350,7 @@
     });
     updateQualHint();
 
-    byId("tNext3").addEventListener("click",()=>showTStep(4));
+    byId("tNext3").addEventListener("click",()=>showTStep(5));
 
     byId("cUseMT").addEventListener("change",()=>{
       byId("cMT").disabled = !byId("cUseMT").checked;

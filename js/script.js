@@ -4,12 +4,12 @@
 
     // ===== EmailJS config =====
     const EMAILJS_CONFIG = {
-      publicKey: "BITTE_EMAILJS_PUBLIC_KEY_EINTRAGEN",
-      serviceId: "BITTE_EMAILJS_SERVICE_ID_EINTRAGEN",
+      publicKey: "VtxuO_VHab-oaPsmo",
+      serviceId: "service_xKontx",
       templates: {
-        einrichtung: "BITTE_TEMPLATE_ID_EINRICHTUNG_EINTRAGEN",
-        therapeut: "BITTE_TEMPLATE_ID_THERAPEUT_EINTRAGEN",
-        kontakt: "BITTE_TEMPLATE_ID_KONTAKT_EINTRAGEN"
+        einrichtung: "template_r87t54j",
+        therapeut: "template_jrexu7i",
+        kontakt: "template_r87t54j"
       }
     };
 
@@ -70,7 +70,7 @@
         const el = byId(id);
         if(el) el.checked = false;
       });
-      ["cHours","cDays","cKG","cMT","cZNS","tGender","tName","tEmail","tPhone","tZip","tCity"].forEach(id => {
+      ["cHours","cDays","cKG","cMT","cZNS","tGender","tName","tEmail","tPhone","tZip","tCity","tMsg"].forEach(id => {
         const el = byId(id);
         if(el) el.value = "";
       });
@@ -104,18 +104,20 @@
   impressum: `
     <h2>Impressum</h2>
     <p><strong>Angaben gemäß § 5 DDG</strong><br>
-    FaSt – Physiotherapie in sozialen Einrichtungen<br>
-    Abteilung der Physio Strobl – therapeutisches Handwerk<br>
+    Physio Strobl – FaSt<br>
     Inhaber: Matthias Strobl<br>
-    Münchener Str. 155<br>
+    Münchenerstraße 155<br>
     85051 Ingolstadt</p>
 
     <p><strong>Kontakt</strong><br>
-E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a></p>
+    Telefon: <a href="tel:084145674267">0841 45674267</a><br>
+    E-Mail FaSt: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a><br>
+    E-Mail Praxis: <a href="mailto:info@physio-strobl.de">info@physio-strobl.de</a></p>
 
-    <p><strong>Unternehmen / Verantwortlicher</strong><br>
-    Physio Strobl – therapeutisches Handwerk<br>
-    Inhaber: Matthias Strobl</p>
+    <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong><br>
+    Matthias Strobl<br>
+    Münchenerstraße 155<br>
+    85051 Ingolstadt</p>
 
     <p><strong>Berufsbezeichnung</strong><br>
     Physiotherapeut<br>
@@ -124,7 +126,7 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a></p>
     <p><strong>Berufsrechtliche Regelungen</strong><br>
     Maßgeblich ist insbesondere das Gesetz über die Berufe in der Physiotherapie (MPhG).<br>
     Einsehbar unter:
-<a href="https://www.gesetze-im-internet.de/mphg/" target="_blank" rel="noopener">gesetze-im-internet.de/mphg</a></p>
+    <a href="https://www.gesetze-im-internet.de/mphg/" target="_blank" rel="noopener">gesetze-im-internet.de/mphg</a></p>
 
     <h2>Verbraucherstreitbeilegung</h2>
     <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
@@ -133,55 +135,67 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a></p>
     <p>Als Diensteanbieter sind wir nach den allgemeinen Gesetzen für eigene Inhalte auf diesen Seiten verantwortlich. Eine Verpflichtung zur Überwachung übermittelter oder gespeicherter fremder Informationen besteht nur im Rahmen der gesetzlichen Vorschriften. Bei Bekanntwerden konkreter Rechtsverletzungen werden wir entsprechende Inhalte umgehend entfernen.</p>
 
     <h2>Haftung für Links</h2>
-    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte übernehmen wir keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
 
     <h2>Urheberrecht</h2>
     <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Jede Verwertung außerhalb der Grenzen des Urheberrechts bedarf der vorherigen schriftlichen Zustimmung des jeweiligen Rechteinhabers.</p>
   `,
   datenschutz: `
     <h2>Datenschutzerklärung</h2>
-    <p>Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Wir verarbeiten Ihre personenbezogenen Daten ausschließlich im Rahmen der gesetzlichen Vorschriften, insbesondere der Datenschutz-Grundverordnung (DSGVO) und des Bundesdatenschutzgesetzes (BDSG).</p>
+    <p>Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Wir verarbeiten personenbezogene Daten ausschließlich nach den geltenden datenschutzrechtlichen Vorgaben, insbesondere der Datenschutz-Grundverordnung (DSGVO).</p>
 
     <h2>1. Verantwortlicher</h2>
     <p>
       Matthias Strobl<br>
-      Physio Strobl – therapeutisches Handwerk<br>
-      FaSt – Physiotherapie in sozialen Einrichtungen<br>
-      Münchener Str. 155<br>
+      Physio Strobl – FaSt<br>
+      Münchenerstraße 155<br>
       85051 Ingolstadt<br>
-E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
+      Telefon: <a href="tel:084145674267">0841 45674267</a><br>
+      E-Mail FaSt: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a><br>
+      E-Mail Praxis: <a href="mailto:info@physio-strobl.de">info@physio-strobl.de</a>
     </p>
 
-    <h2>2. Hosting und Server-Logfiles</h2>
-    <p>Beim Besuch dieser Website werden durch den Hosting-Anbieter technisch notwendige Daten verarbeitet. Dazu können insbesondere IP-Adresse, Datum und Uhrzeit des Zugriffs, Browsertyp, Betriebssystem, Referrer-URL sowie aufgerufene Seiten gehören. Die Verarbeitung erfolgt zur Sicherstellung des technischen Betriebs und zur Gewährleistung der Sicherheit der Website.</p>
+    <h2>2. Aufruf der Website / Hosting</h2>
+    <p>Beim Besuch dieser Website werden durch den Hosting-Anbieter technisch erforderliche Informationen verarbeitet. Dazu können insbesondere IP-Adresse, Datum und Uhrzeit des Zugriffs, Browsertyp, Betriebssystem, Referrer-URL und aufgerufene Seiten gehören. Die Verarbeitung erfolgt zur Bereitstellung der Website sowie zur Gewährleistung von Stabilität und Sicherheit.</p>
+    <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in einem sicheren und funktionsfähigen Betrieb der Website.</p>
 
-    <h2>3. Kontaktaufnahme</h2>
-    <p>Wenn Sie über die auf dieser Website bereitgestellten Kontaktmöglichkeiten mit uns in Verbindung treten, verarbeiten wir die von Ihnen angegebenen Daten zur Bearbeitung Ihrer Anfrage. Dies betrifft insbesondere Ihren Namen, Ihre E-Mail-Adresse, Ihre Telefonnummer, Ihre Nachricht sowie weitere freiwillig von Ihnen gemachte Angaben.</p>
-    <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf die Anbahnung oder Durchführung eines Vertrags gerichtet ist, sowie im Übrigen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an der Bearbeitung von Anfragen.</p>
+    <h2>3. Kontaktaufnahme über Formulare, E-Mail oder Telefon</h2>
+    <p>Wenn Sie uns kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Angaben zur Bearbeitung Ihrer Anfrage. Je nach Formular können dies insbesondere folgende Daten sein:</p>
+    <ul>
+      <li>Name</li>
+      <li>E-Mail-Adresse</li>
+      <li>Telefonnummer</li>
+      <li>Einrichtung, Anschrift, Postleitzahl und Ort</li>
+      <li>Angaben zu Bedarf, Arbeitsfeld, Arbeitsweise, Modell, Stunden, Tagen und Qualifikationen</li>
+      <li>freiwillige Nachrichteninhalte</li>
+    </ul>
+    <p>Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, da vor dem Absenden der Formulare eine ausdrückliche Bestätigung der Datenschutzerklärung vorgesehen ist. Soweit Ihre Anfrage auf den Abschluss oder die Durchführung eines Vertrags gerichtet ist, kann ergänzend Art. 6 Abs. 1 lit. b DSGVO einschlägig sein.</p>
 
-    <h2>4. Kontaktformulare auf dieser Website</h2>
-    <p>Wenn Sie ein Kontaktformular auf dieser Website absenden, werden die von Ihnen eingegebenen Angaben zur Bearbeitung Ihrer Anfrage an uns übermittelt. Die Übermittlung erfolgt über den Dienst EmailJS. Verarbeitet werden dabei insbesondere Ihr Name, Ihre E-Mail-Adresse, Ihre Telefonnummer, Ihre Nachricht sowie weitere von Ihnen freiwillig angegebene Informationen.</p>
-    <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf die Anbahnung oder Durchführung eines Vertrags gerichtet ist, sowie im Übrigen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an einer einfachen und nutzerfreundlichen Kommunikation.</p>
+    <h2>4. Hinweis zu sensiblen Daten</h2>
+    <p>Bitte übermitteln Sie über die Formulare möglichst keine sensiblen Gesundheitsdaten wie Diagnosen, Befunde oder detaillierte Krankheitsverläufe. Sollten Sie uns solche Angaben dennoch freiwillig mitteilen, verarbeiten wir diese ausschließlich zur Bearbeitung Ihrer Anfrage auf Grundlage Ihrer ausdrücklichen Einwilligung gemäß Art. 9 Abs. 2 lit. a DSGVO.</p>
 
-    <h2>5. Empfänger der Daten</h2>
-    <p>Ihre Daten werden grundsätzlich nicht an Dritte weitergegeben, es sei denn, dies ist zur Bearbeitung Ihrer Anfrage erforderlich, gesetzlich vorgeschrieben oder anderweitig rechtlich zulässig.</p>
+    <h2>5. Nutzung von EmailJS</h2>
+    <p>Für die technische Übermittlung der Formularanfragen nutzen wir den Dienst EmailJS der EmailJS Pte. Ltd. Dabei werden die von Ihnen in die Formulare eingegebenen Daten aus Ihrem Browser an EmailJS übermittelt und von dort an die von uns hinterlegte Empfängeradresse weitergeleitet.</p>
+    <p>Je nach Anfrage können hierbei insbesondere Name, E-Mail-Adresse, Telefonnummer, Nachrichteninhalte sowie weitere Formulardaten verarbeitet werden. Zweck der Verarbeitung ist die zuverlässige technische Übermittlung und Weiterleitung Ihrer Anfrage.</p>
+    <p>Rechtsgrundlage für diese Verarbeitung ist Art. 6 Abs. 1 lit. a DSGVO. Soweit freiwillig besondere Kategorien personenbezogener Daten übermittelt werden, ist ergänzend Art. 9 Abs. 2 lit. a DSGVO maßgeblich.</p>
 
-    <h2>6. Speicherdauer</h2>
-    <p>Wir speichern personenbezogene Daten nur so lange, wie dies zur Bearbeitung Ihrer Anfrage, zur Erfüllung vertraglicher oder gesetzlicher Pflichten oder aufgrund berechtigter Interessen erforderlich ist.</p>
+    <h2>6. Empfänger und Drittlandübermittlung</h2>
+    <p>Empfänger Ihrer Formulardaten sind wir selbst sowie im Rahmen der technischen Abwicklung EmailJS als eingesetzter Dienstleister. Nach den Angaben von EmailJS werden die im Zusammenhang mit dem Dienst genutzten Server in den USA bei Amazon Web Services betrieben. Eine Verarbeitung personenbezogener Daten außerhalb der EU bzw. des EWR kann daher nicht ausgeschlossen werden.</p>
+    <p>Nach den Angaben von EmailJS sollen für Übermittlungen personenbezogener Daten aus Europa geeignete Garantien im Sinne des Art. 46 DSGVO, insbesondere Standardvertragsklauseln, verwendet werden. Weitere Informationen finden Sie in den Datenschutzinformationen von EmailJS.</p>
 
-    <h2>7. Ihre Rechte</h2>
-    <p>Sie haben nach Maßgabe der gesetzlichen Vorschriften das Recht auf Auskunft über die Sie betreffenden personenbezogenen Daten, auf Berichtigung, auf Löschung, auf Einschränkung der Verarbeitung, auf Datenübertragbarkeit sowie auf Widerspruch gegen die Verarbeitung.</p>
+    <h2>7. Speicherdauer</h2>
+    <p>Wir speichern personenbezogene Daten nur so lange, wie dies zur Bearbeitung Ihrer Anfrage erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen. Soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen, löschen wir die Daten, sobald der Zweck der Verarbeitung entfallen ist.</p>
 
-    <h2>8. Beschwerderecht bei einer Aufsichtsbehörde</h2>
+    <h2>8. Ihre Rechte</h2>
+    <p>Sie haben im Rahmen der gesetzlichen Vorgaben insbesondere das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft.</p>
+
+    <h2>9. Beschwerderecht bei einer Aufsichtsbehörde</h2>
     <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.</p>
 
-    <h2>9. SSL- bzw. TLS-Verschlüsselung</h2>
-    <p>Sofern diese Website über eine verschlüsselte Verbindung aufgerufen wird, erfolgt die Übertragung von Inhalten mittels SSL- bzw. TLS-Verschlüsselung.</p>
+    <h2>10. SSL- bzw. TLS-Verschlüsselung</h2>
+    <p>Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung. Sie erkennen eine verschlüsselte Verbindung in der Regel an der Adresszeile Ihres Browsers mit „https://“ und dem Schloss-Symbol.</p>
 
-    <h2>10. Externe Dienste und Inhalte</h2>
-    <p>Sofern auf dieser Website darüber hinaus externe Dienste, eingebettete Inhalte, Karten, Analyse- oder Trackingtools eingesetzt werden, muss diese Datenschutzerklärung entsprechend ergänzt werden.</p>
-
-    <p class="small">Stand: März 2026</p>
+    <p class="small">Stand: 2. April 2026</p>
   `
 };
 
@@ -425,6 +439,7 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
         arbeitsfeld: tState.step1 || "—",
         arbeitsweise: tState.step2 || "—",
         modell: tState.step4 || "—",
+        qualification: qualsStr,
         qualifikationen: qualsStr,
         hours_week: byId("cHours").value || "—",
         days_week: byId("cDays").value || "—",
@@ -436,7 +451,8 @@ E-Mail: <a href="mailto:info@physio-fast.de">info@physio-fast.de</a>
         email: email,
         phone: byId("tPhone").value.trim() || "—",
         zip: zip,
-        city: city
+        city: city,
+        message: byId("tMsg").value.trim() || "—"
       };
 
       try {
